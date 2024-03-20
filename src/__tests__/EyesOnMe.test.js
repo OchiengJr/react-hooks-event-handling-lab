@@ -7,25 +7,23 @@ beforeEach(() => {
 });
 
 test('displays a button with the text "Eyes on me"', () => {
-  expect(screen.queryByText(/Eyes on me/)).toBeInTheDocument();
+  expect(screen.getByText(/Eyes on me/)).toBeInTheDocument();
 });
 
 test("focusing the button triggers console output", () => {
-  console.log = jest.fn();
+  const consoleSpy = jest.spyOn(console, "log");
 
-  const button = screen.queryByText(/Eyes on me/);
+  const button = screen.getByText(/Eyes on me/);
   fireEvent.focus(button);
 
-  expect(console.log).toHaveBeenCalled();
-  expect(console.log.mock.calls[0][0]).toBe("Good!");
+  expect(consoleSpy).toHaveBeenCalledWith("Good!");
 });
 
 test("removing focus (blur) on the button triggers console output", () => {
-  console.log = jest.fn();
+  const consoleSpy = jest.spyOn(console, "log");
 
-  const button = screen.queryByText(/Eyes on me/);
+  const button = screen.getByText(/Eyes on me/);
   fireEvent.blur(button);
 
-  expect(console.log).toHaveBeenCalled();
-  expect(console.log.mock.calls[0][0]).toBe("Hey! Eyes on me!");
+  expect(consoleSpy).toHaveBeenCalledWith("Hey! Eyes on me!");
 });

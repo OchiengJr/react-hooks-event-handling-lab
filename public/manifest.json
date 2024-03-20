@@ -1,6 +1,8 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
+  "description": "A sample web app created with Create React App",
+  "lang": "en",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,5 +23,7 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "scope": "/",
+  "categories": ["education", "technology"]
 }
